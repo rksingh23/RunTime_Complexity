@@ -2,31 +2,21 @@
 #include <iostream>
 #include<vector>
 
-int main() {
-  Solution solution;
-  int num=5;
+int main() 
+{
+  CPPLib s;
 
-  std::cout << "Recursive Prime result for "<<num<< std::endl;
-  for (auto n:solution.FindPrimeRecursive(num)){
-    std::cout<<n<<std::endl;
-  }
+  std::set<std::set<int>> a;
+  std::vector<int> input={2,-2,5,3,4,-4,5};
+  int sum = 0;
+  a=s.twoSum(input,sum);
 
-  std::cout << "Seive Prime result for "<<num<< std::endl;
-  for (auto n:solution.Prime_SieveOfEratosthenes(num)){
-    std::cout<<n<<std::endl;
-  }
+   for(auto it=a.begin();it!=a.end();it++)
+   {
+     for(auto it1=it->begin();it1!=it->end();it1++)
+         std::cout<<*it1;
+   }
 
-  num=-1;
-
-  std::cout << "Recursive Prime result for "<<num<< std::endl;
-  for (auto n:solution.FindPrimeRecursive(num)){
-    std::cout<<n<<std::endl;
-  }
-
-  std::cout << "Seive Prime result for "<<num<< std::endl;
-  for (auto n:solution.Prime_SieveOfEratosthenes(num)){
-    std::cout<<n<<std::endl;
-  }
 
   return 0;
 }

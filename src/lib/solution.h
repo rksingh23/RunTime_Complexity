@@ -4,15 +4,10 @@
 #include <string>
 #include <vector>
 
-class Solution {
-public:
-  
-  std::vector<int> FindPrimeRecursive(int &num);
-  std::vector<int> Prime_SieveOfEratosthenes(int &num); 
-  int globalChk;  
-  bool isPrime(int &num); 
+class CPPLib {
+ public:
+  std::set<std::set<int>> twoSum(std::vector<int>& input, int sum);
 
-//private:
 };
 
 #endif

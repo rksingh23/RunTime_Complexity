@@ -3,95 +3,63 @@
 #include <vector>
 
 
+TEST(Q2_Student, HandlesMultipleOutputs) {
+  CPPLib s;
+  std::vector<int> input={2,-2,5,3,4,-4,5};
+  std::set<std::set<int>> a;
+  int sum=0;
+  a=s.twoSum(input,sum);
+  std::set<std::set<int>> b={{2,-2},{4,-4}};
+  std::vector<int> vec,vec2;
 
-TEST(FindPrimeTest, HandlesPositiveNumberSeive) {
-  Solution solution;
-
-  int num=5;
-  std::vector<int> vect1{2,3,5};
-  std::vector<int> cmp;
-  for (auto n:solution.Prime_SieveOfEratosthenes(num)){
-    cmp.push_back (n);
+  for(auto it=b.begin();it!=b.end();it++)
+   {
+     for(auto it1=it->begin();it1!=it->end();it1++)
+          vec.push_back(*it1);
+   }
+   for(auto it=a.begin();it!=a.end();it++)
+   {
+     for(auto it1=it->begin();it1!=it->end();it1++)
+          vec2.push_back(*it1);
+   }
+  ASSERT_EQ(vec.size(), vec2.size()) << "Vectors x and y are of unequal length";
+  for (int unsigned i = 0; i < vec.size(); ++i){
+    EXPECT_EQ(vec[i],vec2[i]);
   }
-  ASSERT_EQ(cmp.size(), vect1.size()) << "Vectors x and y are of unequal length";
-  for (unsigned int i = 0; i < vect1.size(); ++i){
-    EXPECT_EQ(cmp[i],vect1[i]);
-  } 
-}
-
-TEST(FindPrimeTest, HandlesPositiveNumberRecursive) {
-  Solution solution;
-
-  int num=5;
-  std::vector<int> vect1{2,3,5};
-  std::vector<int> cmp;
-  for (auto n:solution.FindPrimeRecursive(num)){
-    cmp.push_back (n);
-  }
-  ASSERT_EQ(cmp.size(), vect1.size()) << "Vectors x and y are of unequal length";
-  for (unsigned int i = 0; i < vect1.size(); ++i){
-    EXPECT_EQ(cmp[i],vect1[i]);
-  } 
 }
 
 
-TEST(FindPrimeTest, HandlesNegativeNumberSeive) {
-  Solution solution;
+TEST(Q2_Student, HandlesDuplicateInputs) {
+  CPPLib s;
+  std::vector<int> input={2,-2,2,-2,-4,4,5,5,3,3,4,-4,5};
+  std::set<std::set<int>> a;
+  int sum=0;
+  a=s.twoSum(input,sum);
+  std::set<std::set<int>> b={{2,-2},{4,-4}};
+  std::vector<int> vec,vec2;
 
-  int num=-1;
-  std::vector<int> vect1{-1};
-  std::vector<int> cmp;
-  for (auto n:solution.Prime_SieveOfEratosthenes(num)){
-    cmp.push_back (n);
+  for(auto it=b.begin();it!=b.end();it++)
+   {
+     for(auto it1=it->begin();it1!=it->end();it1++)
+          vec.push_back(*it1);
+   }
+   for(auto it=a.begin();it!=a.end();it++)
+   {
+     for(auto it1=it->begin();it1!=it->end();it1++)
+          vec2.push_back(*it1);
+   }
+  ASSERT_EQ(vec.size(), vec2.size()) << "Vectors x and y are of unequal length";
+  for (int unsigned i = 0; i < vec.size(); ++i){
+    EXPECT_EQ(vec[i],vec2[i]);
   }
-  ASSERT_EQ(cmp.size(), vect1.size()) << "Vectors x and y are of unequal length";
-  for (unsigned int i = 0; i < vect1.size(); ++i){
-    EXPECT_EQ(cmp[i],vect1[i]);
-  } 
 }
 
-TEST(FindPrimeTest, HandlesNegativeNumberRecursive) {
-  Solution solution;
-
-  int num=-1;
-  std::vector<int> vect1{-1};
-  std::vector<int> cmp;
-  for (auto n:solution.FindPrimeRecursive(num)){
-    cmp.push_back (n);
-  }
-  ASSERT_EQ(cmp.size(), vect1.size()) << "Vectors x and y are of unequal length";
-  for (unsigned int i = 0; i < vect1.size(); ++i){
-    EXPECT_EQ(cmp[i],vect1[i]);
-  } 
-}
-
-
-TEST(FindPrimeTest, HandlesZeroSeive) {
-  Solution solution;
-
-  int num=0;
-  std::vector<int> vect1{-1};
-  std::vector<int> cmp;
-  for (auto n:solution.Prime_SieveOfEratosthenes(num)){
-    cmp.push_back (n);
-  }
-  ASSERT_EQ(cmp.size(), vect1.size()) << "Vectors x and y are of unequal length";
-  for (unsigned int i = 0; i < vect1.size(); ++i){
-    EXPECT_EQ(cmp[i],vect1[i]);
-  } 
-}
-
-TEST(FindPrimeTest, HandlesZerorRecursive) {
-  Solution solution;
-
-  int num=0;
-  std::vector<int> vect1{-1};
-  std::vector<int> cmp;
-  for (auto n:solution.FindPrimeRecursive(num)){
-    cmp.push_back (n);
-  }
-  ASSERT_EQ(cmp.size(), vect1.size()) << "Vectors x and y are of unequal length";
-  for (unsigned int i = 0; i < vect1.size(); ++i){
-    EXPECT_EQ(cmp[i],vect1[i]);
-  } 
+TEST(Q2_Student, HandlesNoOutput) {
+  CPPLib s;
+  std::vector<int> input={2,-2,2,-2,-4,4,5,5,3,3,4,-4,5};
+  std::set<std::set<int>> a;
+  int sum=100;
+  std::set<std::set<int>> cmp ={{}};
+  a=s.twoSum(input,sum);
+  EXPECT_EQ(a,cmp);
 }
